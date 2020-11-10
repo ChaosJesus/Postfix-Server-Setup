@@ -305,7 +305,7 @@ install_postfix_dovecot() {
 	mkdir "/etc/opendmarc/"
 	echo "localhost" > /etc/opendmarc/ignore.hosts
 	chown -R opendmarc:opendmarc /etc/opendmarc
-  chown -R opendmarc:opendmarc /var/run/opendmarc/opendmarc.pid
+  chown -R opendmarc:opendmarc /var/run/opendmarc/
 
 	echo 'SOCKET="inet:54321"' >> /etc/default/opendmarc
 
