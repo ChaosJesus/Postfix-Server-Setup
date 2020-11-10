@@ -291,7 +291,7 @@ install_postfix_dovecot() {
 
 	cat <<-EOF > /etc/opendmarc.conf
 	AuthservID ${primary_domain}
-	PidFile /var/run/opendmarc.pid
+	PidFile /var/run/opendmarc/opendmarc.pid
 	RejectFailures false
 	Syslog true
 	TrustedAuthservIDs ${primary_domain}
@@ -305,6 +305,7 @@ install_postfix_dovecot() {
 	mkdir "/etc/opendmarc/"
 	echo "localhost" > /etc/opendmarc/ignore.hosts
 	chown -R opendmarc:opendmarc /etc/opendmarc
+  chown -R opendmarc:opendmarc /var/run/opendmarc/opendmarc.pid
 
 	echo 'SOCKET="inet:54321"' >> /etc/default/opendmarc
 
@@ -557,9 +558,9 @@ function Install_GoPhish {
 
 function Install_IRedMail {
 	echo "Downloading iRedMail"
-	wget https://bitbucket.org/zhb/iredmail/downloads/iRedMail-0.9.6.tar.bz2
-	tar -xvf iRedMail-0.9.6.tar.bz2
-	cd iRedMail-0.9.6/
+	wget https://github.com/iredmail/iRedMail/archive/1.3.2.tar.gz
+	tar -zxf 1.3.2.tar.gz
+	cd iRedMail-1.3.2/
 	chmod +x iRedMail.sh
 	echo "Running iRedMail Installer"
 	./iRedMail.sh
